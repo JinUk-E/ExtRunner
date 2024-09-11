@@ -6,8 +6,8 @@ public class MovePresenter : MonoBehaviour
 {
    private void OnEnable()
    {
-      Observable.Interval(TimeSpan.FromSeconds(1))
-         .Subscribe(_ => transform.position += Vector3.left * GameManager.Instance.WorldSpeed)
+      Observable.EveryUpdate()
+         .Subscribe(_ => transform.position += Vector3.left * GameManager.Instance.WorldSpeed * Time.deltaTime)
          .AddTo(this);
    }
 
